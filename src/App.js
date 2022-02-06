@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import Navbar from './Components/Navbar';
-import { Card, CardActions, Grid, Button, Typography, CardContent, Box } from '@mui/material/';
+import { Card, CardActions, Grid, Button, Typography} from '@mui/material/';
 import Cards from './Components/Cards';
 import { Route, Routes, useNavigate } from 'react-router-dom';
+import Trailer from './Components/Trailer';
+
 
 
 
@@ -10,30 +12,56 @@ import { Route, Routes, useNavigate } from 'react-router-dom';
 const App = () => {
 
   const [trending, settrending] = useState(null);
+  const [totalPage, settotalPage] = useState('');
+  const [page, setpage] = useState(1);
+
+  const [trailer, settrailer] = useState(null);
 
   useEffect(() => {
 
     if (!trending) {
       setTimeout(() => {
-        fethTrending()
+        fetchTrending()
       }, 1600)
     }
-
+    
   }, [trending]);
+  
+  const fetchTrendings = (event) => {
+    fetchTrending()
+    let currPage = (page)
+    currPage = +(event.target.innerText)
+    setpage(currPage)
+    console.log(page)
+   }
 
-  const fethTrending = () => {
-    fetch('https://api.themoviedb.org/3/trending/all/week?api_key=9bf9a37935497cb8a2ccc58d4602c789')
+  const fetchTrending = () => {
+    fetch(`https://api.themoviedb.org/3/trending/all/week?api_key=9bf9a37935497cb8a2ccc58d4602c789&page=${page}`)
       .then(d => d.json())
-      .then(res => settrending(res.results))
+      .then(res => {
+        settrending(res.results)
+        settotalPage(res.total_pages)
+      })
   }
+  const navigate = useNavigate();
 
-  console.log(trending);
+
+  const fetchTrailer = (movie) =>{
+    fetch(`https://api.themoviedb.org/3/movie/${movie}?api_key=9bf9a37935497cb8a2ccc58d4602c789&append_to_response=videos`)
+      .then(d => d.json())
+      .then(res => {
+        settrailer(res)
+      })
+      navigate('/movie-trailer')
+    }
+    console.log(trending);
 
   return <Typography>
     <div className='Main'>
       <Navbar />
       <Routes>
-        <Route exact path={'/'} element={<Cards trending={trending}/>} />
+        <Route exact path={'/'} element={<Cards trending={trending} fetchTrending={fetchTrendings} totalPage={totalPage} page={page} fetchTrailer={fetchTrailer}/>} />
+        <Route exact path={'/movie-trailer'} element={<Trailer trailerData={trailer} trendingData={trending} />} />
       </Routes>
     </div>;
   </Typography>

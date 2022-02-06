@@ -129,13 +129,13 @@ html, body{
 }
 .mainContent h2{
     padding-left: 4%;
-    margin-top: 30px;
+    margin-top: 10px;
     font-weight: 400;
     letter-spacing: 2px;
     color: white;
 }
 .trendingContainer::-webkit-scrollbar{
-    height: 12px;
+    width: 12px;
     background-color: rgba(58, 58, 58, 0.408);
 }
 .trendingContainer::-webkit-scrollbar-thumb{
@@ -145,19 +145,22 @@ html, body{
 .trendingContainer{
     padding-left: 4%;
     min-width: 100%;
-    margin-top: 25px;
+    margin-top: 20px;
     overflow-y: auto;
-    height: 50%;
+    height: 80%;
     display: flex;
     /* background-color: red; */
 }
 .CARD{
-    min-width: 13%;
+    width: 76%;
     height: 90%;
-    margin-right: 16px;
+    /* margin-right: 16px; */
     border-radius: 8px;
     /* background-color: yellow; */
     overflow: hidden;
+}
+.CARD:hover{
+    cursor: pointer;
 }
 .CARD .top{
     overflow: hidden;
@@ -209,10 +212,58 @@ html, body{
     text-decoration: none;
 }
 
-
-
-
-
+.pagination{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+    /* height: 100px; */
+    /* background-color: rgba(165, 165, 165, 0.605); */
+}
+.paginationMain{
+    background-color: rgba(165, 165, 165, 0.886);
+    height: "45px"
+}
+.trailerMain{
+    width: 100%;
+    height: 80%;
+}
+.imageMain{
+    width: 100%;
+    height: 100%;
+}
+.trailerMain img{
+    object-fit: cover;
+    object-position: top;
+    width: 100%;
+}
+.imageBlur{
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.537);
+}
+.moviePoster{
+    width: 15%;
+    height: 60%;
+    background-color: red;
+}
+.content{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 50px;
+    padding-left: 30px;
+    position: absolute;
+    top: 10%;
+    /* background-color: rebeccapurple; */
+}
+.trailerVideo{
+    margin-top: -150px;
+}
 
 
 
