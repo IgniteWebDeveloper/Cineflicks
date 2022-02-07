@@ -32,7 +32,6 @@ const App = () => {
     let currPage = (page)
     currPage = +(event.target.innerText)
     setpage(currPage)
-    console.log(page)
    }
 
   const fetchTrending = () => {
@@ -54,7 +53,6 @@ const App = () => {
       })
       navigate('/movie-trailer')
     }
-    console.log(trending);
 
   return <Typography>
     <div className='Main'>
