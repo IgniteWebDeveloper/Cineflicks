@@ -10,23 +10,15 @@ import {useNavigate} from 'react-router-dom';
 
 
 
-const Navbar = () => {
+const Navbar = ({fetchSearch}) => {
 
-  const navigate = useNavigate()
 
-  const fetchSearch = (event) => {
-    event.preventDefault()
-    fetch(`https://api.themoviedb.org/3/search/movie?api_key=9bf9a37935497cb8a2ccc58d4602c789&query=${event.target.query.value}`)
-      .then(d => d.json())
-      .then(res => {
-        navigate('/search')
-        console.log(res);
-      })
-  }
   return <Typography>
     <nav className='Navbar'>
       <div className="logoSec">
+        <a href="/">
         <img src={Logo} alt='LOGO' />
+        </a>
       </div>
       <div className="right">
         <div className="search-box">

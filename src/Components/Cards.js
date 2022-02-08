@@ -22,8 +22,6 @@ const Cards = ({ trending, fetchTrending, totalPage, page, fetchTrailer }) => {
 
 const classes = withStyles();
 
-
-
   return <Fragment>
     <div className="mainContent">
       {!trending ?
