@@ -57,7 +57,7 @@ const classes = withStyles();
               display:"flex",
               alignItems:"center",
              borderRadius: '5px'}} 
-             onChange={(event)=>fetchTrending(event)}
+             onChange={fetchTrending}
              page={page}
              itemsCountPerPage={10}
              totalItemsCount={10}

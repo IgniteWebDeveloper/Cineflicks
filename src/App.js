@@ -4,6 +4,9 @@ import { Card, CardActions, Grid, Button, Typography} from '@mui/material/';
 import Cards from './Components/Cards';
 import { Route, Routes, useNavigate } from 'react-router-dom';
 import Trailer from './Components/Trailer';
+import {trending, Page, totalPages} from './Context/Context';
+
+
 
 
 
