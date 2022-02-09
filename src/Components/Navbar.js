@@ -31,7 +31,7 @@ const Navbar = ({fetchSearch}) => {
           </div>
         </div>
         <a exact href="/">Home</a>
-        <a exact href=".Trending">Trending</a>
+        <a exact href="#">Trending</a>
       </div>
     </nav>
   </Typography>
