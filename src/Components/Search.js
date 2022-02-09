@@ -1,24 +1,28 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useContext } from 'react';
 import { Grid } from '@mui/material/';
 import { Pagination, Stack } from '@mui/material/';
 import { withStyles } from '@mui/styles';
 import Loader from '../preview.gif';
+import {State} from '../Context/Context'
 
 
 
-const Search = ({ searchResult, fetchTrailer }) => {
+const Search = () => {
+
+  const {searchResults, fetchTrailer} = useContext(State)
+
   return <Fragment>
-    {!searchResult ?
+    {!searchResults ?
       <div className="loadingMain">
         <img className='loading' src={Loader} alt="" />
       </div> :
       <div className="trendingContainer">
-        {searchResult.total_results === 0 ?
+        {searchResults.total_results === 0 ?
           <h2>OOPS there is no result related to your Search</h2> :
-          <h2>Total Results: {searchResult.results.length}</h2>}
+          <h2>Total Results: {searchResults.results.length}</h2>}
         <Grid container spacing={{ xs: 1, md: 1 }} columns={{ xs: 2, sm: 4, md: 25 }}>
 
-          {searchResult.results.map(movie =>
+          {searchResults.results.map(movie =>
             <Grid item xs={2} sm={4} md={4} key={movie.id}  >
               <div onClick={()=>fetchTrailer(movie.id)}  className="CARD">
                 <div className="top">
