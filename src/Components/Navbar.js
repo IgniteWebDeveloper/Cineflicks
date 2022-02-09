@@ -1,28 +1,17 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import Logo from './Cineflicks-logos_white.png';
 import { Link } from 'react-router-dom';
 import { Typography } from '@material-ui/core';
 import SearchIcon from '@mui/icons-material/Search';
 import {useNavigate} from 'react-router-dom';
-import {State} from '../Context/Context'
+;
 
 
 
 
 
-const Navbar = () => {
+const Navbar = ({fetchSearch}) => {
 
-  const {setsearchResults, navigate} = useContext(State)
-
-  const fetchSearch = (event) => {
-    event.preventDefault()
-    fetch(`https://api.themoviedb.org/3/search/movie?api_key=9bf9a37935497cb8a2ccc58d4602c789&query=${event.target.query.value}`)
-      .then(d => d.json())
-      .then(res => {
-        setsearchResults(res)
-        navigate('/search')
-      })
-  }
 
   return <Typography>
     <nav className='Navbar'>

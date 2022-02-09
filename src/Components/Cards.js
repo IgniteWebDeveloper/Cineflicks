@@ -1,15 +1,14 @@
-import React, { Fragment, useContext } from 'react';
+import React, { Fragment } from 'react';
 import Loader from '../preview.gif';
 import {Grid } from '@mui/material/';
 import {Pagination, Stack} from '@mui/material/';
 import {withStyles} from '@mui/styles';
-import {State} from '../Context/Context'
 
 
 
 
 
-const Cards = ({ fetchTrending }) => {
+const Cards = ({ trending, fetchTrending, totalPage, page, fetchTrailer }) => {
   const styles = theme => ({
     root: {
       flexShrink: 0,
@@ -17,10 +16,6 @@ const Cards = ({ fetchTrending }) => {
       marginLeft: theme.spacing.unit * 2.5,
     },
   });
-
-  const {trending, totalPage, page, fetchTrailer} = useContext(State)
-
-
 
 {/* <a href={`https://api.themoviedb.org/3/movie/${movie.id}?api_key=9bf9a37935497cb8a2ccc58d4602c789&append_to_response=videos`}></a> */}
   
