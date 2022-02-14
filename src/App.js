@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import Navbar from './Components/Navbar';
-import { Card, CardActions, Grid, Button, Typography} from '@mui/material/';
+import { Typography} from '@mui/material/';
 import Cards from './Components/Cards';
 import { Route, Routes, useNavigate } from 'react-router-dom';
 import Trailer from './Components/Trailer';
-import {trending, Page, totalPages} from './Context/Context';
 import Search from './Components/Search';
 
 
@@ -13,7 +12,7 @@ import Search from './Components/Search';
 
 
 
-const App = () => {
+const App = ({exact = true}) => {
 
   const [trending, settrending] = useState(null);
   const [totalPage, settotalPage] = useState('');
@@ -22,15 +21,7 @@ const App = () => {
 
   const [trailer, settrailer] = useState(null);
 
-  useEffect(() => {
 
-    if (!trending) {
-      setTimeout(() => {
-        fetchTrending()
-      }, 1600)
-    }
-    
-  }, [trending]);
   
   const fetchTrendings = (event) => {
     fetchTrending()
@@ -49,6 +40,15 @@ const App = () => {
   }
   const navigate = useNavigate();
 
+  useEffect(() => {
+
+    if (!trending) {
+      setTimeout(() => {
+        fetchTrending()
+      }, 1600)
+    }
+    
+  }, [trending]);
 
   const fetchSearch = (event) => {
     event.preventDefault()
@@ -59,8 +59,7 @@ const App = () => {
         navigate('/search')
       })
     }
-    
-    console.log(searchResults);
+
 
   const fetchTrailer = (movie) =>{
     fetch(`https://api.themoviedb.org/3/movie/${movie}?api_key=9bf9a37935497cb8a2ccc58d4602c789&append_to_response=videos`)
@@ -71,13 +70,13 @@ const App = () => {
       navigate('/movie-trailer')
     }
 
-  return <Typography>
+  return <Typography component={'span'} variant={'body2'}>
     <div className='Main'>
       <Navbar fetchSearch={fetchSearch} />
       <Routes>
-        <Route exact path={'/'} element={<Cards trending={trending} fetchTrending={fetchTrendings} totalPage={totalPage} page={page} fetchTrailer={fetchTrailer}/>} />
-        <Route exact path={'/movie-trailer'} element={<Trailer trailerData={trailer} trendingData={trending} />} />
-        <Route exact path={'/search'} element={<Search searchResult={searchResults}  fetchTrailer={fetchTrailer}/>} />
+        <Route  path={'/'} element={<Cards trending={trending} fetchTrending={fetchTrendings} totalPage={totalPage} page={page} fetchTrailer={fetchTrailer}/>} />
+        <Route  path={'/movie-trailer'} element={<Trailer trailerData={trailer} trendingData={trending} />} />
+        <Route  path={'/search'} element={<Search searchResult={searchResults}  fetchTrailer={fetchTrailer}/>} />
       </Routes>
     </div>;
   </Typography>

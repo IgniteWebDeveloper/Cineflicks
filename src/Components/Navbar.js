@@ -1,19 +1,14 @@
 import React from 'react';
 import Logo from './Cineflicks-logos_white.png';
-import { Link } from 'react-router-dom';
 import { Typography } from '@material-ui/core';
 import SearchIcon from '@mui/icons-material/Search';
-import {useNavigate} from 'react-router-dom';
-;
 
 
 
 
 
 const Navbar = ({fetchSearch}) => {
-
-
-  return <Typography>
+  return <Typography component={'span'} variant={'body2'}>
     <nav className='Navbar'>
       <div className="logoSec">
         <a href="/">
@@ -23,15 +18,15 @@ const Navbar = ({fetchSearch}) => {
       <div className="right">
         <div className="search-box">
           <form onSubmit={(event) => fetchSearch(event)} className="searchfrm" method="GET">
-            <input className="searchinpt" input="text" name="query" autocomplete="off" placeholder="Search for movies, TV shows and more " />
+            <input className="searchinpt" input="text" name="query" autoComplete="off" placeholder="Search for movies, TV shows and more " />
             <button className='searchSubmit'>SEARCH</button>
           </form>
           <div className="search-btn">
             <SearchIcon />
           </div>
         </div>
-        <a exact href="/">Home</a>
-        <a exact href="#">Trending</a>
+        <a href="/">Home</a>
+        <a href="#">Trending</a>
       </div>
     </nav>
   </Typography>
