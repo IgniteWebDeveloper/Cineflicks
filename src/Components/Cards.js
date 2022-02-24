@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react';
 import Loader from '../preview.gif';
 import {Grid } from '@mui/material/';
-import {Pagination, Stack} from '@mui/material/';
+import {Pagination} from '@mui/material/';
 import {withStyles} from '@mui/styles';
 
 

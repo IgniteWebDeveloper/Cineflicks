@@ -295,7 +295,20 @@ html, body{
 .searchPage{
     color: white;
 }
-
+.genreIcon{
+    display: flex;
+    align-items: center;
+    margin-top: 25px;
+    background-color: rgb(123, 196, 255);
+    width: 60%;
+    color: black;
+    padding-left: 20px;
+}
+.genreIcon>img{
+    width: 40px;
+    margin-right: 16px;
+    background-size: cover;
+}
 
 
 
