@@ -8,17 +8,7 @@ import {withStyles} from '@mui/styles';
 
 
 
-const Cards = ({ trending, fetchTrending, totalPage, page, fetchTrailer }) => {
-  const styles = theme => ({
-    root: {
-      flexShrink: 0,
-       color: theme.palette.common.white,
-      marginLeft: theme.spacing.unit * 2.5,
-    },
-  });
-
-{/* <a href={`https://api.themoviedb.org/3/movie/${movie.id}?api_key=9bf9a37935497cb8a2ccc58d4602c789&append_to_response=videos`}></a> */}
-  
+const Cards = ({ trending, fetchTrending, totalPage, page, fetchTrailer }) => {  
 
 const classes = withStyles();
 

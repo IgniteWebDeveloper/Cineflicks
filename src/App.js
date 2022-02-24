@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import Navbar from './Components/Navbar';
-import { Card, CardActions, Grid, Button, Typography} from '@mui/material/';
+import { Typography} from '@mui/material/';
 import Cards from './Components/Cards';
 import { Route, Routes, useNavigate } from 'react-router-dom';
 import Trailer from './Components/Trailer';
-import {trending, Page, totalPages} from './Context/Context';
 import Search from './Components/Search';
+
 
 
 
@@ -25,15 +25,7 @@ const App = () => {
 
   const [trailer, settrailer] = useState(null);
 
-  useEffect(() => {
 
-    if (!trending) {
-      setTimeout(() => {
-        fetchTrending()
-      }, 1600)
-    }
-    
-  }, [trending]);
   
   const fetchTrendings = (event) => {
     fetchTrending()
@@ -52,6 +44,15 @@ const App = () => {
   }
   const navigate = useNavigate();
 
+  useEffect(() => {
+
+    if (!trending) {
+      setTimeout(() => {
+        fetchTrending()
+      }, 1600)
+    }
+    
+  }, [trending]);
 
   const fetchSearch = (event) => {
     event.preventDefault()
@@ -62,7 +63,6 @@ const App = () => {
         navigate('/search')
       })
     }
-    
 
   const fetchTrailer = (movie) =>{
     fetch(`https://api.themoviedb.org/3/movie/${movie}?api_key=9bf9a37935497cb8a2ccc58d4602c789&append_to_response=videos`)
@@ -74,6 +74,7 @@ const App = () => {
       })
       navigate('/movie-trailer')
     }
+
 
 
   return <Typography>

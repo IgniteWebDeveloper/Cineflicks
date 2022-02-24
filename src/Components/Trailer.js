@@ -5,7 +5,6 @@ import Loader from '../preview.gif';
 
 const Trailer = ({ trailerData, genress }) => {
 
-
   return <div className='trailerMain'>
     {!trailerData ?
       <div className="loadingMain">
