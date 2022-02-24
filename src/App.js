@@ -12,12 +12,16 @@ import Search from './Components/Search';
 
 
 
-const App = ({exact = true}) => {
+
+
+const App = () => {
 
   const [trending, settrending] = useState(null);
   const [totalPage, settotalPage] = useState('');
   const [page, setpage] = useState(1);
   const [searchResults, setsearchResults] = useState(null);
+  
+  const [movieGenre, setmovieGenre] = useState([])
 
   const [trailer, settrailer] = useState(null);
 
@@ -60,23 +64,26 @@ const App = ({exact = true}) => {
       })
     }
 
-
   const fetchTrailer = (movie) =>{
     fetch(`https://api.themoviedb.org/3/movie/${movie}?api_key=9bf9a37935497cb8a2ccc58d4602c789&append_to_response=videos`)
       .then(d => d.json())
       .then(res => {
         settrailer(res)
+        let g = res.genres.map(e => ({...e, image: e.name }));
+        setmovieGenre(g)
       })
       navigate('/movie-trailer')
     }
 
-  return <Typography component={'span'} variant={'body2'}>
+
+
+  return <Typography>
     <div className='Main'>
       <Navbar fetchSearch={fetchSearch} />
       <Routes>
-        <Route  path={'/'} element={<Cards trending={trending} fetchTrending={fetchTrendings} totalPage={totalPage} page={page} fetchTrailer={fetchTrailer}/>} />
-        <Route  path={'/movie-trailer'} element={<Trailer trailerData={trailer} trendingData={trending} />} />
-        <Route  path={'/search'} element={<Search searchResult={searchResults}  fetchTrailer={fetchTrailer}/>} />
+        <Route exact path={'/'} element={<Cards trending={trending} fetchTrending={fetchTrendings} totalPage={totalPage} page={page} fetchTrailer={fetchTrailer}/>} />
+        <Route exact path={'/movie-trailer'} element={<Trailer trailerData={trailer} genress={movieGenre} />} />
+        <Route exact path={'/search'} element={<Search searchResult={searchResults}  fetchTrailer={fetchTrailer}/>} />
       </Routes>
     </div>;
   </Typography>
